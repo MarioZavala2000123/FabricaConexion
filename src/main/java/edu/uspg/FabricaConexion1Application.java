@@ -32,7 +32,6 @@ public class FabricaConexion1Application {
 		//id	nombres 	apellidos	telefono
 		//1		Juan		Carrasco	12948575
 		//2		Juan		Carrasco	12948575
-		//3		Juan		Carrasco	12948575
 		
 		//ingrese id a actualizar
 		//3
