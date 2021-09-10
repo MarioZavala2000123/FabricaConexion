@@ -10,10 +10,10 @@ import java.sql.Statement;
 
 import edu.uspg.conexion.IConexion;
 
-public class SQLServer2 implements IConexion {
+public class SQLServer2  {
 
-	String connectionUrl = "jdbc:sqlserver://LAPTOP-ZT.Conexion.windows.net:1433;" + "database=AdventureWorks;"
-			+ "user=usuarioSQL@LAPTOP-ZT;" + "password=123;" + "encrypt=true;"
+	String connectionUrl = "jdbc:sqlserver://yourserver.database.windows.net:1433;" + "database=AdventureWorks;"
+			+ "user=yourusername@yourserver;" + "password=yourpassword;" + "encrypt=true;"
 			+ "trustServerCertificate=false;" + "loginTimeout=30;";
 
 	String insertSql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, StandardCost, ListPrice, SellStartDate) VALUES "

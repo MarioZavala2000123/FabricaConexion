@@ -39,8 +39,8 @@ public class FabricaConexion1Application {
 		//Carrasco
 		//7889-2323
 		
-		if(cnPostgres != null) {
-			System.out.println("Conectado a postgres");
+	//	if(cnPostgres != null) {
+	//		System.out.println("Conectado a postgres");
 	//		try {
 	//			PreparedStatement st = cnPostgres.prepareStatement("insert into alumno(apellidos,nombres,correo) values(?,?,?)");
 	//			st.setString(1, "Santizo");
@@ -51,11 +51,11 @@ public class FabricaConexion1Application {
 	//		} catch(Exception e) {
 	//			e.getMessage();
 	//		}
-		}
+	//	}
 		
 		
-	//	if(cnServer != null) {
-	//		System.out.println("Conectado a SQLServer");
+		if(cnServer != null) {
+			System.out.println("Conectado a SQLServer");
 	//		try {
 	//			PreparedStatement sql = cnServer.prepareStatement("insert into alumno(apellidos,nombres,correo) values(?,?,?)");
 	//			sql.setString(1, "Santizo");
@@ -66,14 +66,10 @@ public class FabricaConexion1Application {
 	//		} catch(Exception e) {
 	//			e.getMessage();
 	//		}
-	//	}
+		}
 		
 		
 	}
 	
-	public void registrar() {
-		
-		
-	}
-
+	
 }
