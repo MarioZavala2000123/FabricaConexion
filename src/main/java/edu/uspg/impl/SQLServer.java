@@ -9,17 +9,20 @@ import edu.uspg.conexion.IConexion;
 public class SQLServer implements IConexion  {
 	
 	private static Connection instancia;
-	private static String DB_URL = "jdbc:sqlserver://localhost:1433;Conexion";
-	private static String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	//private static String USER = "postgres";
-//	private static String PASS = "26092001";
+	
 
+	String connectionUrl = "jdbc:sqlserver://LAPTOP-ZT.Conexion.windows.net:1433;" + "database=AdventureWorks;"
+			+ "user=usuarioSQL@LAPTOP-ZT;" + "password=123;" + "encrypt=true;"
+			+ "trustServerCertificate=false;" + "loginTimeout=30;";
+	
+	
+	
 	@Override
 	public Connection conectar() {
 		try {
 			if(instancia == null) {
-				Class.forName(DRIVER);
-				instancia = DriverManager.getConnection(DB_URL);
+				Class.forName(connectionUrl);
+				instancia = DriverManager.getConnection(connectionUrl);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new RuntimeException("Conexión fallida", e);
