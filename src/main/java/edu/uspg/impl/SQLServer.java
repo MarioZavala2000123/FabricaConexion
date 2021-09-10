@@ -4,43 +4,38 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
 import edu.uspg.conexion.IConexion;
 
-public class SQLServer implements IConexion {
+public class SQLServer implements IConexion  {
+	
+	private static Connection instancia;
+	private static String DB_URL = "jdbc:sqlserver://localhost:1433;Conexion";
+	private static String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	//private static String USER = "postgres";
+//	private static String PASS = "26092001";
 
-	String connectionUrl = "jdbc:sqlserver://yourserver.database.windows.net:1433;" + "database=AdventureWorks;"
-			+ "user=yourusername@yourserver;" + "password=yourpassword;" + "encrypt=true;"
-			+ "trustServerCertificate=false;" + "loginTimeout=30;";
-
-	String insertSql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, StandardCost, ListPrice, SellStartDate) VALUES "
-			+ "('NewBike', 'BikeNew', 'Blue', 50, 120, '2016-01-01');";
-
-	ResultSet resultSet = null;
-
-	try(
-	Connection connection = DriverManager.getConnection(connectionUrl);
-	PreparedStatement prepsInsertProduct = connection.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);)
-	{
-
-		prepsInsertProduct.execute();
-		// Retrieve the generated key from the insert.
-		resultSet = prepsInsertProduct.getGeneratedKeys();
-
-		// Print the ID of the inserted row.
-		while (resultSet.next()) {
-			System.out.println("Generated: " + resultSet.getString(1));
+	@Override
+	public Connection conectar() {
+		try {
+			if(instancia == null) {
+				Class.forName(DRIVER);
+				instancia = DriverManager.getConnection(DB_URL);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			throw new RuntimeException("Conexión fallida", e);
 		}
+		return instancia;
 	}
-	// Handle any errors that may have occurred.
-	catch(
-	Exception e)
-	{
-		e.printStackTrace();
+
+	@Override
+	public void desconectar() {
+		try {
+			Connection conn = conectar();
+			conn.close();
+		} catch(SQLException ex) {
+			throw new RuntimeException(ex);
+		}
+		
 	}
-}
 
 }

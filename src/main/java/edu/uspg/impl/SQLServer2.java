@@ -1,4 +1,4 @@
-package edu.uspg.conexion;
+package edu.uspg.impl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 import edu.uspg.conexion.IConexion;
 
-public class SQLServer implements IConexion {
+public class SQLServer2 implements IConexion {
 
 	String connectionUrl = "jdbc:sqlserver://yourserver.database.windows.net:1433;" + "database=AdventureWorks;"
 			+ "user=yourusername@yourserver;" + "password=yourpassword;" + "encrypt=true;"
