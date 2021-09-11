@@ -56,16 +56,16 @@ public class FabricaConexion1Application {
 		
 		if(cnServer != null) {
 			System.out.println("Conectado a SQLServer");
-	//		try {
+			try {
 	//			PreparedStatement sql = cnServer.prepareStatement("insert into alumno(apellidos,nombres,correo) values(?,?,?)");
 	//			sql.setString(1, "Santizo");
 	//			sql.setString(2, "Diego");
 	//			sql.setString(3, "diegosantizo2021@gmail.com");
 	//			sql.execute();
 	//			sql.close();
-	//		} catch(Exception e) {
-	//			e.getMessage();
-	//		}
+			} catch(Exception e) {
+				e.getMessage();
+			}
 		}
 		
 		
