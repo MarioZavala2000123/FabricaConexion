@@ -9,10 +9,10 @@ import edu.uspg.conexion.IConexion;
 public class Postgres implements IConexion {
 
 	private static Connection instancia;
-	private static String DB_URL = "jdbc:postgresql://localhost:5432/alumno";
+	private static String DB_URL = "jdbc:postgresql://localhost:5432/Conexion";
 	private static String DRIVER = "org.postgresql.Driver";
 	private static String USER = "postgres";
-	private static String PASS = "mariozt26";
+	private static String PASS = "delprado1";
 	
 	@Override
 	public Connection conectar() {
