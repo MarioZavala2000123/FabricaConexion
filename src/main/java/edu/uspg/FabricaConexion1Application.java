@@ -44,7 +44,7 @@ public class FabricaConexion1Application {
 			System.out.println("Conectado a postgres");
 			try {
 				PreparedStatement st = cnPostgres.prepareStatement("insert into alumno(id, nombre) values(?,?)");
-				st.setInt(1, 1);
+				st.setInt(1, 2);
 				st.setString(2, "Diego");
 				st.execute();
 				st.close();
