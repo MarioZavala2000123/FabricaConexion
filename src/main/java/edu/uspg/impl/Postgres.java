@@ -13,11 +13,11 @@ public class Postgres implements IConexion {
 	private static String DRIVER = "org.postgresql.Driver";
 	private static String USER = "postgres";
 	private static String PASS = "delprado1";
-	
+
 	@Override
 	public Connection conectar() {
 		try {
-			if(instancia == null) {
+			if (instancia == null) {
 				Class.forName(DRIVER);
 				instancia = DriverManager.getConnection(DB_URL, USER, PASS);
 			}
@@ -32,10 +32,10 @@ public class Postgres implements IConexion {
 		try {
 			Connection conn = conectar();
 			conn.close();
-		} catch(SQLException ex) {
+		} catch (SQLException ex) {
 			throw new RuntimeException(ex);
 		}
-		
+
 	}
 
 }
