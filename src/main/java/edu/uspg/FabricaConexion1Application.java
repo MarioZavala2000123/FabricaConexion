@@ -16,7 +16,7 @@ public class FabricaConexion1Application {
 		
 		Connection cnPostgres = fabricaConexiones.getConexion("POSTGRES");
 		
-		Connection cnServer = fabricaConexiones.getConexion("SQLSERVER");
+	//	Connection cnServer = fabricaConexiones.getConexion("SQLSERVER");
 		
 		
 		//Menú para registrar
@@ -40,41 +40,5 @@ public class FabricaConexion1Application {
 		//Carrasco
 		//7889-2323
 		
-		if(cnPostgres != null) {
-			System.out.println("Conectado a postgres");
-			try {
-				PreparedStatement st = cnPostgres.prepareStatement("insert into alumno(apellidos,nombres,correo) values(?,?,?)");
-				st.setString(1, "Santizo");
-				st.setString(2, "Diego");
-				st.setString(3, "diegosantizo2021@gmail.com");
-				st.execute();
-				st.close();
-			} catch(Exception e) {
-				e.getMessage();
-			}
-		}
-		
-		
-		if(cnServer != null) {
-			System.out.println("Conectado a SQLServer");
-			try {
-				PreparedStatement sql = cnServer.prepareStatement("insert into alumno(apellidos,nombres,correo) values(?,?,?)");
-				sql.setString(1, "Santizo");
-				sql.setString(2, "Diego");
-				sql.setString(3, "diegosantizo2021@gmail.com");
-				sql.execute();
-				sql.close();
-			} catch(Exception e) {
-				e.getMessage();
-			}
-		}
-		
-		
 	}
-	
-	public void registrar() {
-		
-		
-	}
-
 }
