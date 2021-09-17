@@ -18,11 +18,7 @@ public class FabricaConexion1Application {
 		SpringApplication.run(FabricaConexion1Application.class, args);
 		Scanner scn = new Scanner(System.in);
 		FabricaConexiones fabricaConexiones = new FabricaConexiones();
-		
-		
-		DatosPostgre postgre  = new DatosPostgre();
-		DatosSQLServer sqlserver = new DatosSQLServer();
-		
+
 		char DataBase;
 
 		System.out.println("Seleccione la base de datos a registrar:");
@@ -34,48 +30,50 @@ public class FabricaConexion1Application {
 		if (DataBase == 'p' | DataBase == 's') {
 
 			if (DataBase == 'p') {
-				
+				DatosPostgre postgre = new DatosPostgre();
 				System.out.println("Base de Datos PostgreSQL");
 				Connection cnPostgres = fabricaConexiones.getConexion("POSTGRES");
 
 				// PostgreSQL
 				if (cnPostgres != null) {
-					System.out.println("Conectado a postgres");
-					String nombre;
-					int id;
+					System.out.println("Conectado a Postgres");
+					String nombrePost;
+					int idPost;
 
 					System.out.println("   Ingrese id: ");
 					System.out.print(" -");
-					id = scn.nextInt();
+					idPost = scn.nextInt();
 
 					System.out.println("   Ingrese nombre: ");
 					System.out.print(" -");
-					nombre = scn.next();
+					nombrePost = scn.next();
 
-					
-
-					postgre.RegistrarDatos(nombre, id);
+					postgre.RegistrarDatos(nombrePost, idPost);
 				}
 
 			}
 //--------------------------------------------------------------------------------------------------------------------------
 			if (DataBase == 's') {
+				DatosSQLServer sqlserver = new DatosSQLServer();
 				System.out.println("Base de Datos SQL Server");
 				Connection cnServer = fabricaConexiones.getConexion("SQLSERVER");
 
 				// SQLServer
 				if (cnServer != null) {
+
 					System.out.println("Conectado a SQLServer");
-					try {
-						PreparedStatement sql = cnServer.prepareStatement("insert into alumno(id,nombre) "
-								+ "values(?,?)");
-						sql.setInt(1, 1);
-						sql.setString(2, "Diego");
-						sql.execute();
-						sql.close();
-					} catch (Exception e) {
-						e.getMessage();
-					}
+					String nombreSQL;
+					int idSQL;
+
+					System.out.println("   Ingrese id: ");
+					System.out.print(" -");
+					idSQL = scn.nextInt();
+
+					System.out.println("   Ingrese nombre: ");
+					System.out.print(" -");
+					nombreSQL = scn.next();
+
+					sqlserver.RegistrarDatos(nombreSQL, idSQL);
 				}
 			}
 
