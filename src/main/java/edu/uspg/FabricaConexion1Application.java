@@ -2,6 +2,7 @@ package edu.uspg;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import org.springframework.boot.SpringApplication;
@@ -13,7 +14,7 @@ import edu.uspg.EnvioDatos.DatosSQLServer;
 @SpringBootApplication
 public class FabricaConexion1Application {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		SpringApplication.run(FabricaConexion1Application.class, args);
 		Scanner scn = new Scanner(System.in);
 		FabricaConexiones fabricaConexiones = new FabricaConexiones();
@@ -44,17 +45,20 @@ public class FabricaConexion1Application {
 				// PostgreSQL
 				if (cnPostgres != null) {
 					System.out.println("Conectado a postgres");
-					try {
-						PreparedStatement st = cnPostgres.prepareStatement("insert into alumno(id,nombre) "
-								+ "values(?,?)");
-						
-						st.setInt(1, 2);
-						st.setString(2, "Diego");
-						st.execute();
-						st.close();
-					} catch (Exception e) {
-						e.getMessage();
-					}
+					String nombre;
+					int id;
+
+					System.out.println("   Ingrese id: ");
+					System.out.print(" -");
+					id = scn.nextInt();
+
+					System.out.println("   Ingrese nombre: ");
+					System.out.print(" -");
+					nombre = scn.next();
+
+					
+
+					postgre.RegistrarDatos(nombre, id);
 				}
 
 			}
