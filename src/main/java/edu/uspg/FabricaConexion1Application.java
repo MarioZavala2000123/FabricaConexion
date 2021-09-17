@@ -53,7 +53,6 @@ public class FabricaConexion1Application {
 
 					System.out.println("Datos registrados correctamente");
 				}
-
 			}
 // --------------------------------------------------------------------------------------------------------------------------------
 			// SQLServer
