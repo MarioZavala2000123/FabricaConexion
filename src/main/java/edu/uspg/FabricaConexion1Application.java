@@ -7,6 +7,9 @@ import java.util.Scanner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import edu.uspg.EnvioDatos.DatosPostgre;
+import edu.uspg.EnvioDatos.DatosSQLServer;
+
 @SpringBootApplication
 public class FabricaConexion1Application {
 
@@ -16,18 +19,25 @@ public class FabricaConexion1Application {
 		FabricaConexiones fabricaConexiones = new FabricaConexiones();
 		
 		
+		DatosPostgre postgre  = new DatosPostgre();
+		DatosSQLServer sqlserver = new DatosSQLServer();
+		
+		
+		
+		int opcion = 0;
 
-		char DBPostgre = 'p';
+		char DataBase;
 
 		System.out.println("Seleccione la base de datos a registrar:");
 		System.out.println("PostgreSQL = p 	SQL Server = s");
 
 		System.out.print("Base de Datos: ");
-		DBPostgre = scn.next().charAt(0);
+		DataBase = scn.next().charAt(0);
 
-		if (DBPostgre == 'p' | DBPostgre == 's') {
+		if (DataBase == 'p' | DataBase == 's') {
 
-			if (DBPostgre == 'p') {
+			if (DataBase == 'p') {
+				
 				System.out.println("Base de Datos PostgreSQL");
 				Connection cnPostgres = fabricaConexiones.getConexion("POSTGRES");
 
@@ -35,7 +45,9 @@ public class FabricaConexion1Application {
 				if (cnPostgres != null) {
 					System.out.println("Conectado a postgres");
 					try {
-						PreparedStatement st = cnPostgres.prepareStatement("insert into alumno(id,nombre) values(?,?)");
+						PreparedStatement st = cnPostgres.prepareStatement("insert into alumno(id,nombre) "
+								+ "values(?,?)");
+						
 						st.setInt(1, 2);
 						st.setString(2, "Diego");
 						st.execute();
@@ -47,7 +59,7 @@ public class FabricaConexion1Application {
 
 			}
 //--------------------------------------------------------------------------------------------------------------------------
-			if (DBPostgre == 's') {
+			if (DataBase == 's') {
 				System.out.println("Base de Datos SQL Server");
 				Connection cnServer = fabricaConexiones.getConexion("SQLSERVER");
 
@@ -55,7 +67,8 @@ public class FabricaConexion1Application {
 				if (cnServer != null) {
 					System.out.println("Conectado a SQLServer");
 					try {
-						PreparedStatement sql = cnServer.prepareStatement("insert into alumno(id,nombre) values(?,?)");
+						PreparedStatement sql = cnServer.prepareStatement("insert into alumno(id,nombre) "
+								+ "values(?,?)");
 						sql.setInt(1, 1);
 						sql.setString(2, "Diego");
 						sql.execute();
