@@ -19,8 +19,8 @@ public class FabricaConexion1Application {
 		Scanner scn = new Scanner(System.in);
 		FabricaConexiones fabricaConexiones = new FabricaConexiones();
 
+// --------------------------------------------------------------------------------------------------------------------------------
 		char DataBase;
-
 		System.out.println("Seleccione la base de datos a registrar:");
 		System.out.println("PostgreSQL = p 	SQL Server = s");
 
@@ -28,7 +28,8 @@ public class FabricaConexion1Application {
 		DataBase = scn.next().charAt(0);
 
 		if (DataBase == 'p' | DataBase == 's') {
-
+// --------------------------------------------------------------------------------------------------------------------------------
+			// PostgreSQL
 			if (DataBase == 'p') {
 				DatosPostgre postgre = new DatosPostgre();
 				System.out.println("Base de Datos PostgreSQL");
@@ -49,10 +50,13 @@ public class FabricaConexion1Application {
 					nombrePost = scn.next();
 
 					postgre.RegistrarDatos(nombrePost, idPost);
+
+					System.out.println("Datos registrados correctamente");
 				}
 
 			}
-//--------------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------------------
+			// SQLServer
 			if (DataBase == 's') {
 				DatosSQLServer sqlserver = new DatosSQLServer();
 				System.out.println("Base de Datos SQL Server");
@@ -74,9 +78,11 @@ public class FabricaConexion1Application {
 					nombreSQL = scn.next();
 
 					sqlserver.RegistrarDatos(nombreSQL, idSQL);
+
+					System.out.println("Datos registrados correctamente");
 				}
 			}
-
+// --------------------------------------------------------------------------------------------------------------------------------
 		} else {
 			System.out.println("Base de datos seleccionada no coincide, por favor ingrese una opción valida.");
 		}
