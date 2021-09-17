@@ -23,10 +23,6 @@ public class FabricaConexion1Application {
 		DatosPostgre postgre  = new DatosPostgre();
 		DatosSQLServer sqlserver = new DatosSQLServer();
 		
-		
-		
-		int opcion = 0;
-
 		char DataBase;
 
 		System.out.println("Seleccione la base de datos a registrar:");
